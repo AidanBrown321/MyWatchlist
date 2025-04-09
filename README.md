@@ -49,3 +49,14 @@ Once the core features are in place, here are a few things I’d like to explore
 - Ratings: Let users rate movies they’ve watched (1–5 stars or thumbs up/down).
 - Sharing a Watchlist: Generate a shareable link to let someone else view your list (read-only).
 
+
+Wireframe: 
+![image](https://github.com/user-attachments/assets/916803dd-fedc-420a-ac55-ac01594b50e8)
+![image](https://github.com/user-attachments/assets/796290bf-f5ca-4366-b663-338b413b39cb)
+![image](https://github.com/user-attachments/assets/34b39dc8-37de-4f5b-9a78-c711c10feb64)
+
+
+
+
+
+
