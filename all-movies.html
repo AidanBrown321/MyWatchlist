@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MyWatchlist</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="header" >
+    <h1>MyWatchlist</h1>
+    <h2>Keep track of movies you want to watch</h2>
+    
+    <button id="load-data">Load All Items</button>
+    </div>
+    
+    <p id="lambda-info">
+        <!-- loaded with AJAX -->
+    </p>  
+
+    <hr>
+
+    <div class="add-form">
+    <h2>Add New Item to Database</h2>
+
+    <form id="add-item-form">
+        <p><label for="item-name">ID:</label>
+        <input type="text" id="item-id" name="item-id" required></p>
+        <p><label for="item-name">Name:</label>
+        <input type="text" id="item-name" name="item-name" required></p>
+        <p><label for="item-price">Price:</label>
+        <input type="number" id="item-price" name="item-price" required></p>
+        <br>
+        <button type="submit">Add Item</button>
+    </form>
+    </div>
+
+    <script>
+        document.getElementById("load-data").onclick = function () {
+            let lambda = document.getElementById("lambda-info");
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function () {
+                const response = JSON.parse(xhr.response);
+
+                let infoTable = '<table>';
+                infoTable += '<tr><th>Id</th><th>Name</th><th>Price</th><th>Action</th></tr>';
+
+                response.forEach(item => {
+                    infoTable += `<tr>
+                        <td>${item.id}</td>
+                        <td>${item.name}</td>
+                        <td>${item.price}</td>
+                        <td><button onclick="deleteItem('${item.id}')">Delete</button></td>
+                    </tr>`;
+                })
+
+                infoTable += '</table>';
+                lambda.innerHTML = infoTable;
+            });
+            xhr.open("GET", "https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items");
+            xhr.send();
+        }
+
+        function deleteItem(id) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("DELETE", `https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items/${id}`);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send();
+        }
+
+
+        document.getElementById("add-item-form").onsubmit = function () {
+            event.preventDefault();
+
+            const id = document.getElementById("item-id").value;
+            const name = document.getElementById("item-name").value;
+            const price = document.getElementById("item-price").value;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("PUT", "https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.send(JSON.stringify({
+                "id": id,
+                "price": price,
+                "name": name
+            }));
+        }
+    </script>
+</body>
+
+</html>
