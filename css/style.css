@@ -148,3 +148,121 @@ footer {
     flex-direction: column;
   }
 }
+
+
+
+
+/* Movie Cards Styling */
+.movie-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.movie-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33.333% - 20px);
+  min-width: 250px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  border-top: 5px solid #ccc;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card.status-watched {
+  border-top-color: #4CAF50;
+}
+
+.movie-card.status-towatch {
+  border-top-color: #2196F3;
+}
+
+.movie-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.movie-genre {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.movie-status {
+  margin-bottom: 15px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.status-watched .status-badge {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.status-towatch .status-badge {
+  background-color: #E3F2FD;
+  color: #0D47A1;
+}
+
+.movie-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.movie-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.delete-btn {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.delete-btn:hover {
+  background-color: #ffcdd2;
+}
+
+.watch-btn {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.watch-btn:hover {
+  background-color: #c8e6c9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-card {
+      width: 100%;
+  }
+}
+
+.empty-message {
+  text-align: center;
+  color: #666;
+  margin: 40px 0;
+  font-style: italic;
+}
