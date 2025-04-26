@@ -266,3 +266,29 @@ footer {
   margin: 40px 0;
   font-style: italic;
 }
+
+/* Success message styling */
+.success {
+  color: green;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Header buttons styling */
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header h1, .header h2 {
+  margin-bottom: 10px;
+}

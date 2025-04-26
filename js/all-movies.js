@@ -1,20 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners when the page is loaded
     document.getElementById("load-data").addEventListener('click', loadAllMovies);
-    document.getElementById("add-movie-form").addEventListener('submit', function(event) {
-        event.preventDefault();
-        addNewMovie();
-    });
-
+    
     // Automatically load movies when the page opens
     loadAllMovies();
 });
 
 /**
- * Loads all movies from the API and displays them in a table
+ * Loads all movies from the API and displays them as cards
  */
 function loadAllMovies() {
     let lambda = document.getElementById("lambda-info");
+    lambda.innerHTML = '<p>Loading movies...</p>';
+    
     let xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function () {
         const response = JSON.parse(xhr.response);
@@ -49,39 +47,6 @@ function loadAllMovies() {
     });
     xhr.open("GET", "https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items");
     xhr.send();
-}
-
-/**
- * Adds a new item to the database
- */
-function addNewMovie() {
-    const id = document.getElementById("movie-id").value;
-    const title = document.getElementById("movie-title").value;
-    const genre = document.getElementById("movie-genre").value;
-    const movieStatus = document.querySelector('input[name="movie-status"]:checked').value;
-
-
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("PUT", "https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items");
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.addEventListener("load", function() {
-        // Clear form fields after successful submission
-        document.getElementById("movie-id").value = '';
-        document.getElementById("movie-title").value = '';
-        document.getElementById("movie-genre").value = '';
-        document.getElementById("status-towatch").checked = true;
-        
-        // Refresh the movie list
-        loadAllMovies();
-    });
-
-    xhr.send(JSON.stringify({
-        "id": id,
-        "title": title,
-        "genre": genre,
-        "status": movieStatus,
-    }));
 }
 
 /**
