@@ -13,19 +13,27 @@
 <body>
     <div class="header">
         <h1>MyWatchlist</h1>
-        <h2>Keep track of movies you want to watch</h2>
+        <h2>Your Movie Collection</h2>
         
         <div class="header-buttons">
-            <button id="load-data">Load All Movies</button>
-            <a href="add-movie.html" class="nav-button">Add Movie</a>
+            <button id="load-data">Refresh Movies</button>
         </div>
     </div>
     
+    <nav class="main-navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="all-movies.html" class="nav-button active">All Movies</a>
+        <a href="add-movie.html" class="nav-button">Add Movie</a>
+        <a href="stats.html" class="nav-button">Stats</a>
+    </nav>
+    
     <hr>
     
-    <p id="lambda-info">
-        <!-- loaded with AJAX -->
-    </p>  
+    <div class="all-movies-container">
+        <div id="lambda-info" class="centered-content">
+            <!-- loaded with AJAX -->
+        </div>
+    </div>
 
     <!-- Include the external JavaScript file -->
     <script src="js/all-movies.js"></script>

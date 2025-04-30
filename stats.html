@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stats - MyWatchlist</title>
+    <meta name="description" content="View statistics about your movie watchlist">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>MyWatchlist</h1>
+        <h2>Your Viewing Stats</h2>
+    </div>
+    
+    <nav class="main-navigation">
+        <a href="index.html" class="nav-button">Home</a>
+        <a href="all-movies.html" class="nav-button">View All Movies</a>
+        <a href="add-movie.html" class="nav-button">Add New Movie</a>
+    </nav>
+    
+    <hr>
+    
+    <div class="stats-container">
+        <div class="stats-summary">
+            <div class="total-count">
+                <h3>Total Movies</h3>
+                <div id="total-count" class="count-number">Loading...</div>
+            </div>
+        </div>
+        
+        <div class="charts-container">
+            <div class="chart-box">
+                <h3>Watch Status</h3>
+                <div class="chart-wrapper">
+                    <canvas id="status-chart"></canvas>
+                </div>
+            </div>
+            
+            <div class="chart-box">
+                <h3>Genres</h3>
+                <div class="chart-wrapper">
+                    <canvas id="genre-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/stats.js"></script>
+</body>
+
+</html>
