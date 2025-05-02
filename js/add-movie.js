@@ -10,10 +10,15 @@ document.addEventListener('DOMContentLoaded', function() {
  * Adds a new movie to the database and redirects back to all-movies
  */
 function addNewMovie() {
-    const id = document.getElementById("movie-id").value;
     const title = document.getElementById("movie-title").value;
     const genre = document.getElementById("movie-genre").value;
     const movieStatus = document.querySelector('input[name="movie-status"]:checked').value;
+    
+    // Generate a simple ID using timestamp
+    const id = "movie-" + Date.now();
+    
+    // Set the ID to the hidden field
+    document.getElementById("movie-id").value = id;
 
     let xhr = new XMLHttpRequest();
     xhr.open("PUT", "https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items");

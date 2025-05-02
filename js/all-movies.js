@@ -54,7 +54,7 @@ function loadAllMovies() {
  * @param {string} id - The ID of the item to delete
  */
 function deleteMovie(id) {
-    if (confirm(`Are you sure you want to delete movie ${id}?`)) {
+    if (confirm(`Are you sure you want to delete this movie?`)) {
         let xhr = new XMLHttpRequest();
         xhr.open("DELETE", `https://5qgtokv6k4.execute-api.eu-north-1.amazonaws.com/items/${id}`);
         xhr.setRequestHeader("Content-Type", "application/json");
