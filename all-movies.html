@@ -17,6 +17,7 @@
         
         <div class="header-buttons">
             <button id="load-data">Refresh Movies</button>
+            
         </div>
     </div>
     
@@ -29,6 +30,33 @@
     <hr>
     
     <div class="all-movies-container">
+        <div class="filters-section">
+            <h3>Filter Movies</h3>
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="status-filter">Status:</label>
+                    <select id="status-filter">
+                        <option value="all">All Status</option>
+                        <option value="watched">Watched</option>
+                        <option value="towatch">To Watch</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="genre-filter">Genre:</label>
+                    <select id="genre-filter">
+                        <option value="all">All Genres</option>
+                        <!-- Genre options will be populated by JavaScript -->
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="search-filter">Search:</label>
+                    <input type="text" id="search-filter" placeholder="Search titles...">
+                </div>
+            </div>
+        </div>
+        
         <div id="lambda-info" class="centered-content">
             <!-- loaded with AJAX -->
         </div>
