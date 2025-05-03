@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
-<title>QUnit</title>
-<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.21.0.css">
+<head>
+  <meta charset="utf-8">
+  <title>MyWatchlist Tests</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.21.0.css">
+</head>
 <body>
   <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
+  <div id="qunit-fixture">
+    <!-- Canvas elements for testing -->
+    <div id="total-count"></div>
+    <canvas id="status-chart"></canvas>
+    <canvas id="genre-chart"></canvas>
+  </div>
+  
+  <!-- Prevent real AJAX calls during tests -->
+  <script>
+    // Block real AJAX calls
+    window.XMLHttpRequest = function() {
+      return {
+        open: function() {},
+        send: function() {},
+        setRequestHeader: function() {},
+        addEventListener: function() {}
+      };
+    };
+    
+    // Mock Chart.js
+    window.Chart = function() {
+      return {
+        update: function() {},
+        destroy: function() {}
+      };
+    };
+    
+    // Mock canvas getContext
+    HTMLCanvasElement.prototype.getContext = function() {
+      return {
+        canvas: this
+      };
+    };
+    
+    // Mock document.getElementById 
+    const originalGetElementById = document.getElementById;
+    document.getElementById = function(id) {
+      const element = originalGetElementById.call(document, id);
+      
+      // If element doesn't exist in test HTML, create a mock
+      if (!element && (id === 'status-chart' || id === 'genre-chart')) {
+        const canvas = document.createElement('canvas');
+        canvas.id = id;
+        
+        // Add getContext method directly to this element
+        canvas.getContext = function() {
+          return {
+            canvas: canvas
+          };
+        };
+        
+        return canvas;
+      }
+      
+      return element;
+    };
+  </script>
+  
   <script src="https://code.jquery.com/qunit/qunit-2.21.0.js"></script>
+  <script>
+    QUnit.config.autostart = false;
+  </script>
   <script type="module" src="test.js"></script>
 </body>
 </html>

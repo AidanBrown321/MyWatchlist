@@ -207,3 +207,5 @@ function generateColors(count) {
     
     return { background, border };
 }
+
+export { calculateWatchStats, calculateGenreStats, generateColors };
